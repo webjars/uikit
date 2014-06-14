@@ -11,14 +11,14 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>uikit</artifactId>
-    <version>2.4.0-2-SNAPSHOT</version>
+    <version>2.7.1-SNAPSHOT</version>
     <name>UIkit</name>
     <description>WebJar for UIkit</description>
     <url>http://webjars.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>2.4.0</upstream.version>
+        <upstream.version>2.7.1</upstream.version>
         <upstream.url>https://github.com/uikit/uikit/releases/download/v${upstream.version}</upstream.url>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
         <requirejs>
@@ -91,11 +91,7 @@
                         <configuration>
                             <target>
                                 <echo message="unzip archive" />
-                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
-                                <echo message="moving resources" />
-                                <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/uikit-${upstream.version}" />
-                                </move>
+                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${destDir}" />
                             </target>
                         </configuration>
                     </execution>
