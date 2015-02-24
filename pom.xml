@@ -16,6 +16,7 @@
     <description>WebJar for UIkit</description>
     <url>http://webjars.org</url>
 
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <upstream.version>2.17.0</upstream.version>
