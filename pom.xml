@@ -19,7 +19,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>2.20.0</upstream.version>
+        <upstream.version>2.20.1</upstream.version>
         <upstream.url>https://github.com/uikit/uikit/releases/download/v${upstream.version}</upstream.url>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
         <requirejs>
@@ -55,7 +55,7 @@
         <url>http://github.com/webjars/uikit</url>
         <connection>scm:git:https://github.com/webjars/uikit.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/uikit.git</developerConnection>
-        <tag>uikit-2.20.0</tag>
+        <tag>uikit-2.20.1</tag>
     </scm>
 
     <dependencies>
