@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>uikit</artifactId>
-    <version>2.26.4-SNAPSHOT</version>
+    <version>3.2.7-SNAPSHOT</version>
     <name>UIkit</name>
     <description>WebJar for UIkit</description>
     <url>http://webjars.org</url>
@@ -19,9 +19,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>2.26.3</upstream.version>
-        <upstream.url>https://github.com/uikit/uikit/releases/download/v${upstream.version}</upstream.url>
-        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
+        <upstream.url>https://github.com/uikit/uikit/releases/download/v${version.unsnapshot}</upstream.url>
+        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
         <requirejs>
             {
                 "paths": { "uikit": "dist/js/uikit" },
@@ -69,6 +68,20 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>com.jamesward</groupId>
+                <artifactId>unsnapshot-maven-plugin</artifactId>
+                <version>0.2</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>unsnapshot</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>wagon-maven-plugin</artifactId>
                 <version>1.0-beta-4</version>
@@ -80,7 +93,7 @@
                         </goals>
                         <configuration>
                             <url>${upstream.url}</url>
-                            <fromFile>uikit-${upstream.version}.zip</fromFile>
+                            <fromFile>uikit-${version.unsnapshot}.zip</fromFile>
                             <toFile>${project.build.directory}/${project.artifactId}.zip</toFile>
                         </configuration>
                     </execution>
@@ -97,10 +110,10 @@
                         <configuration>
                             <target>
                                 <echo message="unzip archive" />
-                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}/uikit-${upstream.version}" />
+                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}/uikit-${version.unsnapshot}" />
                                 <echo message="moving resources" />
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/uikit-${upstream.version}" excludes="docs/ vendor/" />
+                                    <fileset dir="${project.build.directory}/uikit-${version.unsnapshot}" excludes="docs/ vendor/" />
                                 </move>
                             </target>
                         </configuration>
